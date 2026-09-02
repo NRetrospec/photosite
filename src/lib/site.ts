@@ -3,14 +3,14 @@
  * for any photographer without touching component code.
  */
 export const site = {
-  name: "John Doe",
-  studio: "John Doe Photography",
+  name: "Kim",
+  studio: "Kim Photography",
   tagline: "Stories Worth Remembering.",
   intro:
     "Portrait, wedding, lifestyle, and editorial photography crafted around authentic moments.",
   location: "Portland, Oregon",
   region: "Pacific Northwest · Available worldwide",
-  email: "hello@johndoephotography.com",
+  email: "hello@kimphotography.com",
   phone: "+1 (503) 555-0184",
   specialties: ["Weddings", "Portraits", "Editorial", "Lifestyle", "Travel"],
   travel: "Available for travel",
@@ -20,7 +20,7 @@ export const site = {
     pinterest: "https://pinterest.com",
     vimeo: "https://vimeo.com",
   },
-  url: "https://johndoephotography.com",
+  url: "https://kimphotography.com",
 } as const;
 
 export const bookingTypes = [
