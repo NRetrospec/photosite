@@ -15,6 +15,8 @@ export async function GET() {
   const unauthorized = await guard();
   if (unauthorized) return unauthorized;
 
+  if (!db) return NextResponse.json({ bookings: [] });
+
   const rows = await db.select().from(bookings).orderBy(desc(bookings.createdAt));
   return NextResponse.json({ bookings: rows });
 }
@@ -27,6 +29,8 @@ export async function PATCH(request: Request) {
   if (!Number.isInteger(id) || !bookingStatuses.includes(status as BookingStatus)) {
     return NextResponse.json({ error: "Invalid id or status." }, { status: 400 });
   }
+
+  if (!db) return NextResponse.json({ error: "No database configured." }, { status: 501 });
 
   const [updated] = await db
     .update(bookings)
@@ -49,6 +53,8 @@ export async function DELETE(request: Request) {
   if (!Number.isInteger(id)) {
     return NextResponse.json({ error: "Invalid id." }, { status: 400 });
   }
+
+  if (!db) return NextResponse.json({ error: "No database configured." }, { status: 501 });
 
   await db.delete(bookings).where(eq(bookings.id, id));
   return NextResponse.json({ ok: true });
