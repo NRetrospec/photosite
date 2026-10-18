@@ -44,7 +44,7 @@ export function Nav() {
           e.preventDefault();
           navigate("/");
         }}
-        className="group pointer-events-auto flex items-center gap-3 text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold/70"
+        className="group pointer-events-auto flex items-center gap-3 rounded-full border border-black/10 bg-white/60 py-1.5 pl-2.5 pr-2.5 text-cream shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:pr-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald/70"
         aria-label={`${site.name} — home`}
       >
         <ApertureMark className="h-7 w-7 transition-transform duration-700 group-hover:rotate-[60deg]" />
@@ -56,7 +56,7 @@ export function Nav() {
       {/* Floating pill nav */}
       <nav
         aria-label="Primary"
-        className="pointer-events-auto flex items-center gap-0.5 rounded-full border border-white/10 bg-black/40 px-1.5 py-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:gap-1"
+        className="pointer-events-auto flex items-center gap-0.5 rounded-full border border-black/10 bg-white/60 px-1.5 py-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:gap-1"
       >
         {links.map((link) => {
           const active = pathname === link.href;
@@ -70,8 +70,8 @@ export function Nav() {
                 e.preventDefault();
                 navigate(link.href);
               }}
-              className={`relative rounded-full px-3 py-2 font-sans text-[11px] font-medium tracking-[0.22em] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold/70 sm:px-4 ${
-                active ? "text-black" : "text-cream/80 hover:text-cream"
+              className={`relative rounded-full px-3 py-2 font-sans text-[11px] font-medium tracking-[0.22em] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald/70 sm:px-4 ${
+                active ? "text-ink" : "text-cream/80 hover:text-cream"
               }`}
             >
               {active && (

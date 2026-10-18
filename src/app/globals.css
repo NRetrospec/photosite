@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0a0a0b;
-  --color-coal: #131315;
-  --color-charcoal: #1c1d20;
-  --color-smoke: #8a8a90;
-  --color-cream: #f2efe9;
-  --color-warmwhite: #faf8f4;
-  --color-gold: #d6c7a8;
-  --color-silver: #b9bcc2;
+  /* Sky-blue surfaces; text tokens are dark so they stay legible on #87CEEB. */
+  --color-ink: #87ceeb;
+  --color-coal: #a6dcf1;
+  --color-charcoal: #6fbbdd;
+  --color-smoke: #3a4a5a;
+  --color-cream: #10151c;
+  --color-warmwhite: #080c11;
+  --color-emerald: #07593a;
+  --color-silver: #475667;
 
   --font-serif: var(--font-cormorant), "Georgia", serif;
   --font-sans: var(--font-manrope), "Helvetica Neue", sans-serif;
@@ -17,7 +18,19 @@
 
 html {
   scroll-behavior: smooth;
-  background: #0a0a0b;
+  background: #87ceeb;
+}
+
+/*
+ * Regions that sit on top of photographs keep light text over a neutral
+ * dark scrim, so the sky-blue page tokens don't wash them out.
+ */
+.on-photo {
+  --color-ink: #05070a;
+  --color-cream: #eef1ec;
+  --color-warmwhite: #f7f9f4;
+  --color-smoke: #c9d3df;
+  --color-emerald: #4fbf8b;
 }
 
 body {
@@ -28,8 +41,8 @@ body {
 }
 
 ::selection {
-  background: rgba(214, 199, 168, 0.9);
-  color: #0a0a0b;
+  background: rgba(7, 89, 58, 0.9);
+  color: #f7f9f4;
 }
 
 /* ————— camera-focus page reveal ————— */
@@ -76,7 +89,7 @@ body {
   position: absolute;
   width: 22px;
   height: 22px;
-  border: 1px solid rgba(214, 199, 168, 0.9);
+  border: 1px solid rgba(79, 191, 139, 0.9);
   opacity: 0;
   transition:
     opacity 0.35s ease,
@@ -150,7 +163,7 @@ body {
 
 /* elegant input styling */
 .field {
-  @apply w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 font-sans text-[15px] text-cream placeholder:text-smoke/60 focus:border-gold focus:outline-none focus:ring-0 transition-colors duration-300;
+  @apply w-full rounded-none border-0 border-b border-black/25 bg-transparent px-0 py-3 font-sans text-[15px] text-cream placeholder:text-smoke/60 focus:border-emerald focus:outline-none focus:ring-0 transition-colors duration-300;
 }
 .field-label {
   @apply mb-1 block font-mono text-[10px] uppercase tracking-[0.3em] text-smoke;

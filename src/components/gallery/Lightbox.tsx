@@ -67,13 +67,13 @@ export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) 
       >
         <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-smoke">
           {String(index + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
-          <span className="ml-4 hidden text-gold sm:inline">{photo.meta}</span>
+          <span className="ml-4 hidden text-emerald sm:inline">{photo.meta}</span>
         </p>
         <button
           ref={closeBtn}
           onClick={onClose}
           aria-label="Close lightbox"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-cream transition-colors hover:border-gold hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15 text-cream transition-colors hover:border-emerald hover:text-emerald focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
             <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.4" />
@@ -130,7 +130,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) 
             prev();
           }}
           aria-label="Previous photograph"
-          className="absolute left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 text-cream backdrop-blur-sm transition-colors hover:border-gold hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold sm:flex"
+          className="absolute left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-black/15 text-cream backdrop-blur-sm transition-colors hover:border-emerald hover:text-emerald focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald sm:flex"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
             <path d="M10 2L4 8l6 6" stroke="currentColor" strokeWidth="1.4" />
@@ -142,7 +142,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) 
             next();
           }}
           aria-label="Next photograph"
-          className="absolute right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 text-cream backdrop-blur-sm transition-colors hover:border-gold hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold sm:flex"
+          className="absolute right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-black/15 text-cream backdrop-blur-sm transition-colors hover:border-emerald hover:text-emerald focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald sm:flex"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
             <path d="M6 2l6 6-6 6" stroke="currentColor" strokeWidth="1.4" />
@@ -165,7 +165,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) 
             </p>
           )}
         </div>
-        <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.35em] text-gold">
+        <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.35em] text-emerald">
           {photo.category}
         </p>
       </div>

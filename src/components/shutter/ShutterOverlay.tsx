@@ -33,7 +33,7 @@ export function ShutterOverlay({ phase }: { phase: Phase }) {
     return (
       <motion.div
         aria-hidden
-        className="fixed inset-0 z-[120] bg-[#0a0a0a]"
+        className="fixed inset-0 z-[120] bg-[#87ceeb]"
         style={{ pointerEvents: active ? "auto" : "none" }}
         initial={false}
         animate={{ opacity: closingOrClosed ? 1 : 0 }}
@@ -56,7 +56,7 @@ export function ShutterOverlay({ phase }: { phase: Phase }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(4,4,5,0) 30%, rgba(4,4,5,0.72) 72%, rgba(4,4,5,0.96) 100%)",
+            "radial-gradient(ellipse at center, rgba(135,206,235,0) 30%, rgba(135,206,235,0.72) 72%, rgba(135,206,235,0.96) 100%)",
         }}
         initial={false}
         animate={{ opacity: closingOrClosed ? 1 : 0 }}
@@ -69,7 +69,7 @@ export function ShutterOverlay({ phase }: { phase: Phase }) {
 
       {/* 2 — the black chamber behind the blades (inside of the camera) */}
       <motion.div
-        className="absolute inset-0 bg-[#050505]"
+        className="absolute inset-0 bg-[#6fbbdd]"
         initial={false}
         animate={{ opacity: phase === "closed" ? 1 : 0 }}
         transition={{ duration: phase === "closed" ? 0.12 : 0.3 }}
@@ -93,13 +93,13 @@ export function ShutterOverlay({ phase }: { phase: Phase }) {
             <motion.div
               className="absolute inset-0 will-change-transform"
               style={{
-                transformOrigin: "78.7% 9%",
-                clipPath: "polygon(50% 57%, 20.8% 8.6%, 79.2% 8.6%)",
+                transformOrigin: "69.13% 3.81%",
+                clipPath: "polygon(50% 50%, 30.87% 3.81%, 69.13% 3.81%)",
                 background:
-                  "linear-gradient(160deg, #26282c 0%, #14161a 34%, #1d2025 52%, #0c0d10 78%, #17191d 100%)",
-                boxShadow: "inset 0 0 60px rgba(0,0,0,0.8)",
+                  "linear-gradient(160deg, #b4e2f4 0%, #87ceeb 34%, #9bd7ee 52%, #6fbbdd 78%, #8fd0ea 100%)",
+                boxShadow: "inset 0 0 60px rgba(20,70,100,0.35)",
                 filter:
-                  "drop-shadow(0 6px 18px rgba(0,0,0,0.65)) drop-shadow(0 0 1px rgba(255,255,255,0.14))",
+                  "drop-shadow(0 6px 18px rgba(20,70,100,0.35)) drop-shadow(0 0 1px rgba(255,255,255,0.5))",
               }}
               initial={false}
               animate={{
@@ -125,9 +125,9 @@ export function ShutterOverlay({ phase }: { phase: Phase }) {
               <div
                 className="absolute inset-0"
                 style={{
-                  clipPath: "polygon(50% 57%, 20.8% 8.6%, 24.4% 8.6%, 51.6% 53.4%)",
+                  clipPath: "polygon(50% 50%, 30.87% 3.81%, 33.82% 2.58%, 52.96% 48.78%)",
                   background:
-                    "linear-gradient(180deg, rgba(255,255,255,0.16), rgba(214,199,168,0.06) 60%, rgba(255,255,255,0.02))",
+                    "linear-gradient(180deg, rgba(255,255,255,0.16), rgba(79,191,139,0.06) 60%, rgba(255,255,255,0.02))",
                 }}
               />
             </motion.div>
@@ -158,13 +158,13 @@ export function ShutterOverlay({ phase }: { phase: Phase }) {
               cx="22"
               cy="22"
               r="20"
-              stroke="rgba(214,199,168,0.5)"
+              stroke="rgba(7,89,58,0.6)"
               strokeWidth="1"
               strokeDasharray="3 5"
             />
-            <circle cx="22" cy="22" r="3" fill="rgba(214,199,168,0.7)" />
+            <circle cx="22" cy="22" r="3" fill="rgba(7,89,58,0.8)" />
           </svg>
-          <span className="font-mono text-[10px] tracking-[0.4em] text-[#d6c7a8]/70">
+          <span className="font-mono text-[10px] tracking-[0.4em] text-[#07593a]/80">
             ƒ/1.8 · 1/250
           </span>
         </div>

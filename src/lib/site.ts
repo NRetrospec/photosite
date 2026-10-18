@@ -7,12 +7,12 @@ export const site = {
   studio: "Kim Photography",
   tagline: "Stories Worth Remembering.",
   intro:
-    "Portrait, wedding, lifestyle, and editorial photography crafted around authentic moments.",
-  location: "Portland, Oregon",
-  region: "Pacific Northwest · Available worldwide",
+    "Portrait, wedding, editorial, car, animal, and nature photography crafted around authentic moments.",
+  location: "Boynton Beach, Florida",
+  region: "South Florida · Available worldwide",
   email: "hello@kimphotography.com",
-  phone: "+1 (503) 555-0184",
-  specialties: ["Weddings", "Portraits", "Editorial", "Lifestyle", "Travel"],
+  phone: "+1 (561) 555-0184",
+  specialties: ["Weddings", "Portraits", "Editorial", "Cars", "Animals", "Nature"],
   travel: "Available for travel",
   since: 2012,
   social: {
@@ -27,12 +27,12 @@ export const bookingTypes = [
   "Wedding",
   "Elopement",
   "Portrait",
-  "Couples",
   "Family",
   "Editorial / Fashion",
-  "Brand / Lifestyle",
+  "Automotive / Car",
+  "Pet / Animal",
   "Event",
-  "Travel / Destination",
+  "Nature / Wildlife",
   "Other",
 ] as const;
 

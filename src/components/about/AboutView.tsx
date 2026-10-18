@@ -34,10 +34,10 @@ function Counter({ value, suffix = "", label }: { value: number; suffix?: string
   }, [inView, value, reduced]);
 
   return (
-    <div className="border-t border-white/10 pt-5">
+    <div className="border-t border-black/10 pt-5">
       <span ref={ref} className="font-serif text-5xl font-light text-warmwhite sm:text-6xl">
         {n.toLocaleString()}
-        <span className="text-gold">{suffix}</span>
+        <span className="text-emerald">{suffix}</span>
       </span>
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-smoke">{label}</p>
     </div>
@@ -48,7 +48,7 @@ const milestones = [
   { year: "2012", text: "Picked up a camera for the first time and started learning the craft." },
   { year: "2015", text: "Opened the studio and took on a first full season of client work." },
   { year: "2019", text: "First editorial commission and features in print publications." },
-  { year: "2022", text: "Expanded into travel and destination sessions." },
+  { year: "2022", text: "Expanded into automotive, wildlife, and nature photography." },
   { year: "Now", text: "Still chasing the light — and the seconds between the poses." },
 ];
 
@@ -66,7 +66,7 @@ export function AboutView() {
     <div className="min-h-screen bg-ink pb-24">
       {/* hero split */}
       <section ref={heroRef} className="relative grid min-h-[100svh] grid-cols-1 lg:grid-cols-2">
-        <div className="relative order-2 min-h-[60svh] overflow-hidden lg:order-1 lg:min-h-full">
+        <div className="on-photo relative order-2 min-h-[60svh] overflow-hidden lg:order-1 lg:min-h-full">
           <motion.div className="absolute inset-[-8%_0]" style={{ y: portraitY }}>
             <Image
               src={portraitOfPhotographer.src}
@@ -79,28 +79,28 @@ export function AboutView() {
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-ink/30 lg:bg-gradient-to-r lg:from-transparent lg:to-ink/40" />
           <p className="absolute bottom-5 left-5 font-mono text-[10px] uppercase tracking-[0.35em] text-cream/60">
-            <span className="rec-dot mr-2 inline-block h-[7px] w-[7px] rounded-full bg-gold align-middle" />
+            <span className="rec-dot mr-2 inline-block h-[7px] w-[7px] rounded-full bg-emerald align-middle" />
             Self portrait · {site.location}
           </p>
         </div>
 
         <div className="order-1 flex flex-col justify-center px-6 pb-10 pt-32 sm:px-12 lg:order-2 lg:px-16 lg:pt-24">
           <FadeIn>
-            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold">
+            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald">
               The Person Behind The Lens
             </p>
             <h1 className="mt-6 font-serif text-5xl font-light leading-[1.02] text-warmwhite sm:text-7xl">
               I&rsquo;m {site.name.split(" ")[0]}.
               <br />
-              <em className="text-gold">I collect light.</em>
+              <em className="text-emerald">I collect light.</em>
             </h1>
           </FadeIn>
           <FadeIn delay={0.15}>
             <p className="mt-8 max-w-lg font-sans text-sm font-light leading-relaxed text-cream/80 sm:text-base">
               For {years} years I&rsquo;ve photographed weddings, portraits, and
-              everything in between, working with couples, families, and
-              brands alike. My work lives where documentary honesty meets
-              editorial craft.
+              everything in between — from custom cars and wildlife to the
+              quiet corners of nature. My work lives where documentary
+              honesty meets editorial craft.
             </p>
             <p className="mt-5 max-w-lg font-sans text-sm font-light leading-relaxed text-smoke">
               Based in {site.location} · {site.travel.toLowerCase()} ·{" "}
@@ -111,7 +111,7 @@ export function AboutView() {
             <div className="mt-10">
               <ShutterLink
                 href="/booking"
-                className="inline-block rounded-full border border-cream/30 px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-cream transition-colors duration-500 hover:border-gold hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                className="inline-block rounded-full border border-cream/30 px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-cream transition-colors duration-500 hover:border-emerald hover:text-emerald focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald"
               >
                 Work With Me
               </ShutterLink>
@@ -127,7 +127,7 @@ export function AboutView() {
             <p className="font-serif text-3xl font-light italic leading-snug text-warmwhite sm:text-5xl">
               &ldquo;Photography, to me, isn&rsquo;t about perfect poses. It&rsquo;s
               about capturing the moments that happen{" "}
-              <span className="text-gold">between them</span>.&rdquo;
+              <span className="text-emerald">between them</span>.&rdquo;
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
@@ -156,7 +156,7 @@ export function AboutView() {
         <div className="mx-auto max-w-6xl gap-16 lg:grid lg:grid-cols-[1fr_1.1fr]">
           <div>
             <FadeIn>
-              <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold">
+              <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald">
                 Milestones
               </p>
               <h2 className="mt-5 font-serif text-4xl font-light text-warmwhite sm:text-5xl">
@@ -166,8 +166,8 @@ export function AboutView() {
             <div className="mt-12 space-y-0">
               {milestones.map((m, i) => (
                 <FadeIn key={m.year} delay={i * 0.05}>
-                  <div className="flex gap-8 border-t border-white/10 py-6">
-                    <span className="w-16 shrink-0 font-mono text-xs tracking-[0.2em] text-gold">
+                  <div className="flex gap-8 border-t border-black/10 py-6">
+                    <span className="w-16 shrink-0 font-mono text-xs tracking-[0.2em] text-emerald">
                       {m.year}
                     </span>
                     <p className="font-sans text-sm font-light leading-relaxed text-cream/80">
@@ -180,7 +180,7 @@ export function AboutView() {
           </div>
 
           <div className="mt-16 grid grid-cols-2 gap-4 lg:mt-0">
-            {["t2", "p4", "l1", "c1"].map((id, i) => {
+            {["n3", "p4", "an2", "car1"].map((id, i) => {
               const p = photos.find((ph) => ph.id === id)!;
               return (
                 <FadeIn
@@ -210,12 +210,12 @@ export function AboutView() {
       <section className="px-6 text-center">
         <FadeIn>
           <h2 className="mx-auto max-w-3xl font-serif text-4xl font-light leading-[1.1] text-warmwhite sm:text-6xl">
-            Let&rsquo;s make something <em className="text-gold">worth remembering.</em>
+            Let&rsquo;s make something <em className="text-emerald">worth remembering.</em>
           </h2>
           <div className="mt-10">
             <ShutterLink
               href="/booking"
-              className="inline-block rounded-full bg-cream px-10 py-4 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-colors duration-500 hover:bg-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              className="inline-block rounded-full bg-cream px-10 py-4 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-colors duration-500 hover:bg-emerald focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald"
             >
               Book a Session
             </ShutterLink>

@@ -6,11 +6,11 @@ import type { Booking, BookingStatus } from "@/db/schema";
 import { bookingStatuses } from "@/db/schema";
 
 const statusStyles: Record<string, string> = {
-  new: "bg-gold/15 text-gold border-gold/40",
-  contacted: "bg-sky-400/10 text-sky-300 border-sky-400/30",
-  confirmed: "bg-emerald-400/10 text-emerald-300 border-emerald-400/30",
-  completed: "bg-white/10 text-cream border-white/25",
-  cancelled: "bg-red-400/10 text-red-300 border-red-400/30",
+  new: "bg-emerald/15 text-emerald border-emerald/40",
+  contacted: "bg-sky-400/10 text-sky-800 border-sky-400/30",
+  confirmed: "bg-emerald-400/10 text-emerald-800 border-emerald-700/40",
+  completed: "bg-black/10 text-cream border-black/25",
+  cancelled: "bg-red-400/10 text-red-700 border-red-400/30",
 };
 
 function fmtDate(d: string | null) {
@@ -92,8 +92,8 @@ export function AdminView() {
   if (authed === null) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-ink">
-        <span className="h-px w-40 overflow-hidden bg-white/10">
-          <span className="exposure-bar block h-full w-full bg-gold" />
+        <span className="h-px w-40 overflow-hidden bg-black/10">
+          <span className="exposure-bar block h-full w-full bg-emerald" />
         </span>
       </div>
     );
@@ -103,7 +103,7 @@ export function AdminView() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-ink px-6">
         <div className="w-full max-w-sm">
-          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold">
+          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald">
             Studio Access
           </p>
           <h1 className="mt-4 font-serif text-4xl font-light text-warmwhite">
@@ -123,11 +123,11 @@ export function AdminView() {
               />
             </div>
             {loginError && (
-              <p role="alert" className="font-sans text-sm text-red-300">{loginError}</p>
+              <p role="alert" className="font-sans text-sm text-red-700">{loginError}</p>
             )}
             <button
               type="submit"
-              className="w-full rounded-full bg-cream py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-colors hover:bg-gold"
+              className="w-full rounded-full bg-cream py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-colors hover:bg-emerald"
             >
               Enter
             </button>
@@ -150,8 +150,8 @@ export function AdminView() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold">
-              <span className="rec-dot mr-2 inline-block h-[7px] w-[7px] rounded-full bg-gold align-middle" />
+            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald">
+              <span className="rec-dot mr-2 inline-block h-[7px] w-[7px] rounded-full bg-emerald align-middle" />
               Studio Admin
             </p>
             <h1 className="mt-3 font-serif text-4xl font-light text-warmwhite sm:text-5xl">
@@ -161,13 +161,13 @@ export function AdminView() {
           <div className="flex items-center gap-4">
             <button
               onClick={load}
-              className="rounded-full border border-white/15 px-5 py-2.5 font-sans text-[11px] uppercase tracking-[0.2em] text-smoke transition-colors hover:border-gold hover:text-gold"
+              className="rounded-full border border-black/15 px-5 py-2.5 font-sans text-[11px] uppercase tracking-[0.2em] text-smoke transition-colors hover:border-emerald hover:text-emerald"
             >
               Refresh
             </button>
             <button
               onClick={logout}
-              className="rounded-full border border-white/15 px-5 py-2.5 font-sans text-[11px] uppercase tracking-[0.2em] text-smoke transition-colors hover:border-red-400/60 hover:text-red-300"
+              className="rounded-full border border-black/15 px-5 py-2.5 font-sans text-[11px] uppercase tracking-[0.2em] text-smoke transition-colors hover:border-red-400/60 hover:text-red-700"
             >
               Sign out
             </button>
@@ -188,7 +188,7 @@ export function AdminView() {
         {loading ? (
           <p className="mt-16 font-mono text-xs tracking-[0.3em] text-smoke">DEVELOPING…</p>
         ) : rows.length === 0 ? (
-          <div className="mt-20 border-t border-white/10 pt-10 text-center">
+          <div className="mt-20 border-t border-black/10 pt-10 text-center">
             <p className="font-serif text-2xl font-light text-smoke">
               No inquiries yet. The frame is empty — for now.
             </p>
@@ -203,7 +203,7 @@ export function AdminView() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98 }}
-                  className="rounded-xl border border-white/[0.08] bg-coal/80"
+                  className="rounded-xl border border-black/[0.08] bg-coal/80"
                 >
                   <button
                     onClick={() => setExpanded(expanded === b.id ? null : b.id)}
@@ -238,7 +238,7 @@ export function AdminView() {
                         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="grid gap-6 border-t border-white/[0.06] px-5 py-5 sm:grid-cols-2">
+                        <div className="grid gap-6 border-t border-black/[0.06] px-5 py-5 sm:grid-cols-2">
                           <dl className="space-y-2 font-sans text-sm font-light text-cream/85">
                             {[
                               ["Phone", b.phone ?? "—"],
@@ -272,7 +272,7 @@ export function AdminView() {
                                     href={b.inspirationUrl}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-gold underline underline-offset-4"
+                                    className="text-emerald underline underline-offset-4"
                                   >
                                     View link
                                   </a>
@@ -293,7 +293,7 @@ export function AdminView() {
                                 id={`status-${b.id}`}
                                 value={b.status}
                                 onChange={(e) => setStatus(b.id, e.target.value as BookingStatus)}
-                                className="rounded-full border border-white/15 bg-ink px-4 py-2 font-mono text-[11px] uppercase tracking-[0.15em] text-cream focus:border-gold focus:outline-none"
+                                className="rounded-full border border-black/15 bg-ink px-4 py-2 font-mono text-[11px] uppercase tracking-[0.15em] text-cream focus:border-emerald focus:outline-none"
                               >
                                 {bookingStatuses.map((s) => (
                                   <option key={s} value={s}>{s}</option>
@@ -301,7 +301,7 @@ export function AdminView() {
                               </select>
                               <button
                                 onClick={() => remove(b.id)}
-                                className="ml-auto rounded-full border border-red-400/30 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-red-300 transition-colors hover:bg-red-400/10"
+                                className="ml-auto rounded-full border border-red-400/30 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-red-700 transition-colors hover:bg-red-400/10"
                               >
                                 Delete
                               </button>

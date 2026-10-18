@@ -76,12 +76,12 @@ export function BookingView() {
                   animate={{ rotate: 0, opacity: 1 }}
                   transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <circle cx="36" cy="36" r="33" stroke="#d6c7a8" strokeWidth="1" strokeDasharray="4 6" />
-                  <circle cx="36" cy="36" r="22" stroke="#d6c7a8" strokeWidth="1" />
-                  <path d="M27 36.5l6 6L46 29" stroke="#f2efe9" strokeWidth="1.6" strokeLinecap="round" />
+                  <circle cx="36" cy="36" r="33" stroke="#07593a" strokeWidth="1" strokeDasharray="4 6" />
+                  <circle cx="36" cy="36" r="22" stroke="#07593a" strokeWidth="1" />
+                  <path d="M27 36.5l6 6L46 29" stroke="#10151c" strokeWidth="1.6" strokeLinecap="round" />
                 </motion.svg>
                 <h1 className="mt-10 font-serif text-5xl font-light leading-[1.05] text-warmwhite sm:text-7xl">
-                  Your story <em className="text-gold">starts here.</em>
+                  Your story <em className="text-emerald">starts here.</em>
                 </h1>
                 <p className="mt-6 max-w-lg font-sans text-sm font-light leading-relaxed text-cream/75 sm:text-base">
                   Thank you, {form.name.split(" ")[0] || "friend"}. Your request is
@@ -95,7 +95,7 @@ export function BookingView() {
                 <div className="mt-10 flex flex-wrap gap-4">
                   <ShutterLink
                     href="/gallery"
-                    className="rounded-full border border-cream/30 px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-cream transition-colors duration-500 hover:border-gold hover:text-gold"
+                    className="rounded-full border border-cream/30 px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-cream transition-colors duration-500 hover:border-emerald hover:text-emerald"
                   >
                     Keep Exploring
                   </ShutterLink>
@@ -104,7 +104,7 @@ export function BookingView() {
                       setForm(initial);
                       setDone(false);
                     }}
-                    className="rounded-full px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-smoke transition-colors hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
+                    className="rounded-full px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-smoke transition-colors hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald"
                   >
                     New Request
                   </button>
@@ -117,11 +117,11 @@ export function BookingView() {
                 transition={{ duration: 0.4 }}
               >
                 <FadeIn>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald">
                     Booking Inquiry
                   </p>
                   <h1 className="mt-5 font-serif text-5xl font-light leading-[1.02] text-warmwhite sm:text-7xl">
-                    Let&rsquo;s frame <em className="text-gold">your moment.</em>
+                    Let&rsquo;s frame <em className="text-emerald">your moment.</em>
                   </h1>
                   <p className="mt-5 max-w-xl font-sans text-sm font-light leading-relaxed text-smoke">
                     Tell me about the day you&rsquo;re dreaming of. I&rsquo;ll reply
@@ -163,7 +163,7 @@ export function BookingView() {
                     </div>
                     <div>
                       <label htmlFor="loc" className="field-label">Location</label>
-                      <input id="loc" value={form.location} onChange={set("location")} className="field" placeholder="Portland, the coast, anywhere…" />
+                      <input id="loc" value={form.location} onChange={set("location")} className="field" placeholder="Boynton Beach, the coast, anywhere…" />
                     </div>
                     <div>
                       <label htmlFor="people" className="field-label">Estimated People</label>
@@ -189,7 +189,7 @@ export function BookingView() {
                   </div>
 
                   {error && (
-                    <p role="alert" className="border-l-2 border-red-400/70 pl-4 font-sans text-sm text-red-300">
+                    <p role="alert" className="border-l-2 border-red-400/70 pl-4 font-sans text-sm text-red-700">
                       {error}
                     </p>
                   )}
@@ -198,13 +198,13 @@ export function BookingView() {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="group relative overflow-hidden rounded-full bg-cream px-10 py-4 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-all duration-500 hover:bg-gold disabled:cursor-wait disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                      className="group relative overflow-hidden rounded-full bg-cream px-10 py-4 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-all duration-500 hover:bg-emerald disabled:cursor-wait disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald"
                     >
                       {submitting ? "Developing…" : "Request Booking"}
                     </button>
                     {submitting && (
-                      <span className="h-px w-32 overflow-hidden bg-white/10" aria-hidden>
-                        <span className="exposure-bar block h-full w-full bg-gold" />
+                      <span className="h-px w-32 overflow-hidden bg-black/10" aria-hidden>
+                        <span className="exposure-bar block h-full w-full bg-emerald" />
                       </span>
                     )}
                     <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-smoke/70">
@@ -229,19 +229,19 @@ export function BookingView() {
                 sizes="420px"
                 className="object-cover"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5">
-                <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-gold">
-                  <span className="rec-dot mr-2 inline-block h-[6px] w-[6px] rounded-full bg-gold align-middle" />
+              <div className="on-photo absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-5">
+                <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-emerald">
+                  <span className="rec-dot mr-2 inline-block h-[6px] w-[6px] rounded-full bg-emerald align-middle" />
                   Now booking · {new Date().getFullYear()}
                 </p>
               </div>
             </div>
-            <div className="border-t border-white/10 pt-5">
+            <div className="border-t border-black/10 pt-5">
               <p className="font-serif text-xl text-cream">How it works</p>
               <ol className="mt-4 space-y-3">
                 {["You send the inquiry", "I confirm availability & share a proposal", "We plan the session together", "We make photographs worth keeping"].map((s, i) => (
                   <li key={s} className="flex gap-4 font-sans text-sm font-light text-smoke">
-                    <span className="font-mono text-[10px] leading-6 tracking-widest text-gold">
+                    <span className="font-mono text-[10px] leading-6 tracking-widest text-emerald">
                       0{i + 1}
                     </span>
                     {s}

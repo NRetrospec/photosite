@@ -11,7 +11,13 @@ import {
 import { ShutterLink } from "@/components/shutter/ShutterLink";
 import { FadeIn, Reticle } from "@/components/FadeIn";
 import { site } from "@/lib/site";
-import { heroPhoto, featuredPhotos, photos } from "@/lib/photos";
+import {
+  heroPhoto,
+  featuredPhotos as baseFeatured,
+  photos,
+  withOverride,
+  type PhotoOverrides,
+} from "@/lib/photos";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -30,8 +36,10 @@ function HeadlineWord({ word, i }: { word: string; i: number }) {
   );
 }
 
-export function HomeView() {
+export function HomeView({ overrides }: { overrides: PhotoOverrides }) {
   const reduced = useReducedMotion();
+  const featuredPhotos = baseFeatured.map((p) => withOverride(p, overrides));
+  const quotePhoto = withOverride(photos.find((p) => p.id === "w3")!, overrides);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -67,7 +75,7 @@ export function HomeView() {
             />
           </motion.div>
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-ink/45" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(10,10,11,0.55)_100%)]" />
 
         {/* camera metadata chrome */}
@@ -75,24 +83,24 @@ export function HomeView() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 1 }}
-          className="pointer-events-none absolute inset-x-0 top-24 hidden justify-between px-8 font-mono text-[10px] tracking-[0.35em] text-cream/50 sm:flex"
+          className="on-photo pointer-events-none absolute inset-x-0 top-24 hidden justify-between px-8 font-mono text-[10px] tracking-[0.35em] text-cream/70 sm:flex"
         >
           <span>
-            <span className="rec-dot mr-2 inline-block h-[7px] w-[7px] rounded-full bg-gold align-middle" />
+            <span className="rec-dot mr-2 inline-block h-[7px] w-[7px] rounded-full bg-emerald align-middle" />
             {site.location.toUpperCase()}
           </span>
           <span>{heroPhoto.meta}</span>
         </motion.div>
 
         <motion.div
-          className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
+          className="on-photo relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
           style={{ y: titleY }}
         >
           <motion.p
             initial={{ opacity: 0, letterSpacing: "0.2em" }}
             animate={{ opacity: 1, letterSpacing: "0.45em" }}
             transition={{ delay: 0.7, duration: 1.4, ease: "easeOut" }}
-            className="mb-6 font-mono text-[11px] uppercase text-gold"
+            className="mb-6 font-mono text-[11px] uppercase text-emerald"
           >
             {site.name} · Photographer
           </motion.p>
@@ -120,14 +128,14 @@ export function HomeView() {
           >
             <ShutterLink
               href="/booking"
-              className="group relative overflow-hidden rounded-full bg-cream px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-transform duration-500 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              className="group relative overflow-hidden rounded-full bg-cream px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-transform duration-500 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald"
             >
               <span className="relative z-10">Book a Session</span>
-              <span className="absolute inset-0 -translate-x-full bg-gold transition-transform duration-500 group-hover:translate-x-0" />
+              <span className="absolute inset-0 -translate-x-full bg-emerald transition-transform duration-500 group-hover:translate-x-0" />
             </ShutterLink>
             <ShutterLink
               href="/gallery"
-              className="rounded-full border border-cream/30 px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-cream backdrop-blur-sm transition-colors duration-500 hover:border-gold hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              className="rounded-full border border-cream/30 px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-cream backdrop-blur-sm transition-colors duration-500 hover:border-emerald hover:text-emerald focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald"
             >
               Explore Gallery
             </ShutterLink>
@@ -141,20 +149,20 @@ export function HomeView() {
           transition={{ delay: 2.4, duration: 1.2 }}
           className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between px-6 pb-6 sm:px-8"
         >
-          <p className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-cream/50 md:block">
+          <p className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-cream/70 md:block">
             {site.specialties.join(" · ")}
           </p>
           <div className="mx-auto flex flex-col items-center gap-2 md:mx-0">
-            <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-cream/50">
+            <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-cream/70">
               Scroll
             </span>
             <motion.span
               animate={reduced ? {} : { y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="block h-8 w-px bg-gradient-to-b from-gold to-transparent"
+              className="block h-8 w-px bg-gradient-to-b from-emerald to-transparent"
             />
           </div>
-          <p className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-cream/50 md:block">
+          <p className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-cream/70 md:block">
             {site.travel.toUpperCase()}
           </p>
         </motion.div>
@@ -164,14 +172,14 @@ export function HomeView() {
       <section className="relative px-6 py-28 sm:px-10 sm:py-40" aria-label="Philosophy">
         <div className="mx-auto max-w-5xl">
           <FadeIn>
-            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold">
+            <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald">
               01 — The Approach
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="mt-8 font-serif text-4xl font-light leading-[1.15] text-warmwhite sm:text-6xl lg:text-7xl">
               Photography, to me, isn&rsquo;t about perfect poses.{" "}
-              <em className="text-gold">It&rsquo;s about the moments that happen between them.</em>
+              <em className="text-emerald">It&rsquo;s about the moments that happen between them.</em>
             </h2>
           </FadeIn>
           <FadeIn delay={0.2} className="mt-12 grid gap-10 sm:grid-cols-3">
@@ -180,7 +188,7 @@ export function HomeView() {
               { n: "Emotion", d: "The half-second before the laugh. The exhale after the vow. That's the photograph." },
               { n: "Composition", d: "Frames built like sentences — deliberate, quiet, and impossible to unread." },
             ].map((item) => (
-              <div key={item.n} className="border-t border-white/10 pt-6">
+              <div key={item.n} className="border-t border-black/10 pt-6">
                 <h3 className="font-serif text-2xl text-cream">{item.n}</h3>
                 <p className="mt-3 font-sans text-sm font-light leading-relaxed text-smoke">
                   {item.d}
@@ -196,7 +204,7 @@ export function HomeView() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 flex items-end justify-between px-2">
             <FadeIn>
-              <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold">
+              <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald">
                 02 — Selected Works
               </p>
               <h2 className="mt-4 font-serif text-4xl font-light text-warmwhite sm:text-5xl">
@@ -206,7 +214,7 @@ export function HomeView() {
             <FadeIn delay={0.15}>
               <ShutterLink
                 href="/gallery"
-                className="hidden items-center gap-2 font-sans text-xs uppercase tracking-[0.25em] text-smoke transition-colors hover:text-gold sm:flex"
+                className="hidden items-center gap-2 font-sans text-xs uppercase tracking-[0.25em] text-smoke transition-colors hover:text-emerald sm:flex"
               >
                 Full gallery <span aria-hidden>→</span>
               </ShutterLink>
@@ -227,7 +235,7 @@ export function HomeView() {
                 <FadeIn key={photo.id} delay={i * 0.06} className={spans[i]}>
                   <ShutterLink
                     href="/gallery"
-                    className="reticle group relative block h-full w-full overflow-hidden bg-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
+                    className="reticle group relative block h-full w-full overflow-hidden bg-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald"
                     ariaLabel={`${photo.title} — view in gallery`}
                   >
                     <Reticle />
@@ -238,9 +246,9 @@ export function HomeView() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
                       className="object-cover transition-[transform,filter] duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] group-hover:brightness-110"
                     />
-                    <div className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/85 to-transparent p-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="on-photo absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/85 to-transparent p-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                       <p className="font-serif text-xl text-warmwhite">{photo.title}</p>
-                      <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.3em] text-gold">
+                      <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.3em] text-emerald">
                         {photo.category} · {photo.meta}
                       </p>
                     </div>
@@ -253,11 +261,11 @@ export function HomeView() {
       </section>
 
       {/* ————————— PARALLAX QUOTE ————————— */}
-      <section ref={quoteRef} className="relative h-[80svh] overflow-hidden" aria-label="Quote">
+      <section ref={quoteRef} className="on-photo relative h-[80svh] overflow-hidden" aria-label="Quote">
         <motion.div className="absolute inset-[-14%_0]" style={{ y: quoteImgY }}>
           <Image
-            src={photos.find((p) => p.id === "w3")!.src}
-            alt={photos.find((p) => p.id === "w3")!.alt}
+            src={quotePhoto.src}
+            alt={quotePhoto.alt}
             fill
             sizes="100vw"
             className="object-cover"
@@ -270,7 +278,7 @@ export function HomeView() {
               &ldquo;Light writes the story. I&rsquo;m just the one holding the pen
               steady.&rdquo;
             </p>
-            <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.4em] text-gold">
+            <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.4em] text-emerald">
               — {site.name}
             </p>
           </FadeIn>
@@ -280,11 +288,11 @@ export function HomeView() {
       {/* ————————— CLOSING CTA ————————— */}
       <section className="px-6 py-28 text-center sm:py-40" aria-label="Book a session">
         <FadeIn>
-          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold">
+          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald">
             03 — Begin
           </p>
           <h2 className="mx-auto mt-8 max-w-3xl font-serif text-5xl font-light leading-[1.05] text-warmwhite sm:text-7xl">
-            Your story. <em className="text-gold">My perspective.</em>
+            Your story. <em className="text-emerald">My perspective.</em>
           </h2>
           <p className="mx-auto mt-6 max-w-md font-sans text-sm font-light leading-relaxed text-smoke">
             Sessions open for {new Date().getFullYear()} — weddings, portraits, and
@@ -293,7 +301,7 @@ export function HomeView() {
           <div className="mt-10">
             <ShutterLink
               href="/booking"
-              className="inline-block rounded-full bg-cream px-10 py-4 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-all duration-500 hover:bg-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              className="inline-block rounded-full bg-cream px-10 py-4 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-all duration-500 hover:bg-emerald focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald"
             >
               Book a Session
             </ShutterLink>
